@@ -1,0 +1,49 @@
+{
+  "heroTitleMainTR": "DİJİTAL DÜNYANIN",
+  "heroTitleSubTR": "ARKASINDAKİ SİSTEM.",
+  "heroDescTR": "Sosyal medya operasyonlarından yazılım geliştirmeye, grafik tasarımdan dijital çözümlere kadar ihtiyaç duyduğun her şeyi tek bir merkezde buluşturuyoruz.",
+  "heroTitleMainEN": "THE SYSTEM BEHIND",
+  "heroTitleSubEN": "THE DIGITAL WORLD.",
+  "heroDescEN": "From social media operations to software development, graphic design to digital solutions, we bring everything you need together in a single core.",
+  
+  "softwareServicesTR": [
+    "Web Geliştirme", "Özel Yazılım", "E-Ticaret", "SaaS",
+    "Yönetim Panelleri", "Dashboardlar", "API Entegrasyonları", "Otomasyon",
+    "Veritabanları", "Güvenlik Mimarisi", "Performans Optimizasyonu", "Duyarlı Uygulamalar"
+  ],
+  "softwareServicesEN": [
+    "Web Development", "Custom Software", "E-Commerce", "SaaS",
+    "Admin Panels", "Dashboards", "API Integrations", "Automation",
+    "Databases", "Security Architecture", "Performance Optimization", "Responsive Applications"
+  ],
+
+  "designServicesTR": [
+    "Logo", "Marka Kimliği", "Instagram Post", "Instagram Hikaye",
+    "Reklam Tasarımı", "Afiş", "Esports Tasarımı", "Kurumsal Kimlik",
+    "UI/UX", "Motion Graphics", "3D Grafikler", "Ürün Grafikleri"
+  ],
+  "designServicesEN": [
+    "Logo", "Brand Identity", "Instagram Post", "Instagram Story",
+    "Ad Design", "Poster", "Esports Design", "Corporate Identity",
+    "UI/UX", "Motion Graphics", "3D Graphics", "Product Graphics"
+  ],
+
+  "processStepsTR": [
+    "ANALİZ", "PLANLAMA", "TASARIM", "GELİŞTİRME", "TEST", "YAYIN", "DESTEK"
+  ],
+  "processStepsEN": [
+    "ANALYSIS", "PLANNING", "DESIGN", "DEVELOPMENT", "TESTING", "DEPLOYMENT", "SUPPORT"
+  ],
+
+  "contactDescTR": "Aşağıdaki formu doldurarak projeniz hakkında bize detaylı bilgi verebilir veya doğrudan WhatsApp üzerinden hızlıca iletişime geçebilirsiniz.",
+  "contactDescEN": "By filling out the form below, you can give us detailed information about your project or contact us directly via WhatsApp.",
+  
+  "socialLinks": [
+    { "id": "1", "platform": "Instagram", "url": "#", "iconName": "FaInstagram", "isActive": true },
+    { "id": "2", "platform": "WhatsApp", "url": "#", "iconName": "FaWhatsapp", "isActive": true },
+    { "id": "3", "platform": "TikTok", "url": "#", "iconName": "FaTiktok", "isActive": true },
+    { "id": "4", "platform": "Facebook", "url": "#", "iconName": "FaFacebookF", "isActive": true },
+    { "id": "5", "platform": "YouTube", "url": "#", "iconName": "FaYoutube", "isActive": true },
+    { "id": "6", "platform": "X", "url": "#", "iconName": "FaXTwitter", "isActive": true }
+  ]
+}
