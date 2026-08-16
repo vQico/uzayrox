@@ -64,6 +64,7 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row gap-6 items-start sm:items-center"
         >
           <button 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             data-cursor-hover
             className="group relative px-8 py-4 bg-white text-black font-semibold text-sm tracking-widest overflow-hidden"
           >
@@ -75,6 +76,7 @@ export default function HeroSection() {
           </button>
           
           <button 
+            onClick={() => document.getElementById('software')?.scrollIntoView({ behavior: 'smooth' })}
             data-cursor-hover
             className="group px-8 py-4 bg-transparent text-white font-semibold text-sm tracking-widest border border-white/20 hover:border-white transition-colors flex items-center gap-3"
           >

@@ -237,6 +237,7 @@ export default function AdminDashboardPremium() {
 
   const menuItems = [
     { id: 'dashboard', label: 'DASHBOARD', icon: FaIcons.FaChartPie },
+    { id: 'tickets', label: 'TALEPLER', icon: FaIcons.FaInbox },
     { id: 'hero', label: 'HERO EKRANI', icon: FaIcons.FaRegWindowMaximize },
     { id: 'software', label: 'YAZILIM BİRİMİ', icon: FaIcons.FaCode },
     { id: 'design', label: 'TASARIM BİRİMİ', icon: FaIcons.FaPenNib },
@@ -397,6 +398,69 @@ export default function AdminDashboardPremium() {
                         Sol taraftaki modülleri kullanarak sitenizin tüm içeriğini veritabanı bağlantısı olmadan dinamik olarak değiştirebilirsiniz. Yaptığınız tüm değişiklikler anında yayına yansıyacaktır.
                       </p>
                     </div>
+                  </div>
+                )}
+
+                {/* TICKETS TAB */}
+                {activeTab === 'tickets' && (
+                  <div className="glass-panel p-8 border border-white/5 rounded-2xl bg-black/40">
+                    <div className="flex items-center justify-between mb-8 pb-6 border-b border-white/5">
+                      <div className="flex items-center gap-3">
+                        <FaIcons.FaInbox className="w-6 h-6 text-emerald-500" />
+                        <h3 className="text-lg font-black tracking-widest text-white">GELEN TALEPLER</h3>
+                      </div>
+                      <div className="text-xs text-subtle-gray bg-white/5 px-4 py-2 rounded-lg code-font">
+                        TOPLAM: {localData.tickets?.length || 0}
+                      </div>
+                    </div>
+                    
+                    {!localData.tickets || localData.tickets.length === 0 ? (
+                      <div className="text-center py-20 text-white/30 text-sm code-font tracking-widest">
+                        HENÜZ HİÇ TALEP YOK
+                      </div>
+                    ) : (
+                      <div className="space-y-4">
+                        {localData.tickets.map((ticket: any, idx: number) => (
+                          <div key={ticket.id} className="bg-white/5 border border-white/10 p-6 rounded-xl relative group hover:border-emerald-500/50 transition-colors">
+                            <div className="absolute top-0 left-0 w-1 h-full bg-emerald-500/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-l-xl" />
+                            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                              <div className="flex-1 space-y-4">
+                                <div className="flex items-center gap-4">
+                                  <h4 className="font-bold text-lg text-white">{ticket.name}</h4>
+                                  <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded code-font">
+                                    {ticket.service}
+                                  </span>
+                                  <span className="text-[10px] text-subtle-gray code-font">
+                                    {new Date(ticket.date).toLocaleString('tr-TR')}
+                                  </span>
+                                </div>
+                                <div className="flex gap-6 text-xs text-subtle-gray code-font">
+                                  <div className="flex items-center gap-2">
+                                    <FaIcons.FaEnvelope className="text-white/50" /> {ticket.email}
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <FaIcons.FaPhone className="text-white/50" /> {ticket.phone || '-'}
+                                  </div>
+                                </div>
+                                <p className="text-sm text-white/80 bg-black/50 p-4 rounded-lg border border-white/5 whitespace-pre-wrap">
+                                  {ticket.details}
+                                </p>
+                              </div>
+                              <button 
+                                onClick={() => {
+                                  const newTickets = localData.tickets.filter((t: any) => t.id !== ticket.id);
+                                  setLocalData({...localData, tickets: newTickets});
+                                }}
+                                className="w-10 h-10 bg-red-500/10 text-red-500 rounded-lg flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors flex-shrink-0"
+                                title="Talebi Sil"
+                              >
+                                <FaIcons.FaTrash className="w-4 h-4" />
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
 

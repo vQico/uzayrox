@@ -9,11 +9,49 @@ export default function Contact() {
   const { t, lang } = useLanguage();
   const { cmsData, selectedServiceForContact, setSelectedServiceForContact } = useCMS();
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    details: ''
+  });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    
+    try {
+      const newTicket = {
+        id: Math.random().toString(36).substring(2, 15),
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: selectedServiceForContact || 'Belirtilmedi',
+        details: formData.details,
+        date: new Date().toISOString()
+      };
+
+      // Ensure tickets array exists if upgrading from old version
+      const currentTickets = cmsData.tickets || [];
+      const updatedTickets = [...currentTickets, newTicket];
+      
+      // Update the CMS Context via API endpoint simulation
+      await fetch('/api/cms', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tickets: updatedTickets })
+      });
+      
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', phone: '', details: '' });
+      setSelectedServiceForContact('');
+    } catch (error) {
+      console.error("Ticket submission failed", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const activeServices = lang === 'tr' 
@@ -99,17 +137,17 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div className="flex flex-col gap-2">
                   <label className="code-font text-xs text-subtle-gray">{t.contact.form.name}</label>
-                  <input required type="text" className="bg-white/5 border border-white/10 p-3 rounded focus:outline-none focus:border-white/50 text-sm transition-colors" />
+                  <input required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} type="text" className="bg-white/5 border border-white/10 p-3 rounded-xl focus:outline-none focus:border-white/50 text-sm transition-colors text-white" />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="code-font text-xs text-subtle-gray">{t.contact.form.email}</label>
-                  <input required type="email" className="bg-white/5 border border-white/10 p-3 rounded focus:outline-none focus:border-white/50 text-sm transition-colors" />
+                  <input required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} type="email" className="bg-white/5 border border-white/10 p-3 rounded-xl focus:outline-none focus:border-white/50 text-sm transition-colors text-white" />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2 mb-6">
                 <label className="code-font text-xs text-subtle-gray">{t.contact.form.phone}</label>
-                <input type="tel" className="bg-white/5 border border-white/10 p-3 rounded focus:outline-none focus:border-white/50 text-sm transition-colors" />
+                <input required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} type="tel" className="bg-white/5 border border-white/10 p-3 rounded-xl focus:outline-none focus:border-white/50 text-sm transition-colors text-white" />
               </div>
 
               <div className="flex flex-col gap-2 mb-6">
@@ -118,10 +156,9 @@ export default function Contact() {
                   required 
                   value={selectedServiceForContact || ""}
                   onChange={(e) => setSelectedServiceForContact(e.target.value)}
-                  className="bg-white/5 border border-white/10 p-3 rounded focus:outline-none focus:border-white/50 text-sm transition-colors appearance-none text-white"
+                  className="bg-white/5 border border-white/10 p-3 rounded-xl focus:outline-none focus:border-white/50 text-sm transition-colors appearance-none text-white"
                 >
                   <option value="" disabled className="text-black">{t.contact.form.servicePlaceholder}</option>
-                  {/* Append selected service if it's not in default services array */}
                   {selectedServiceForContact && !activeServices.includes(selectedServiceForContact) && (
                     <option value={selectedServiceForContact} className="text-black">{selectedServiceForContact}</option>
                   )}
@@ -131,7 +168,7 @@ export default function Contact() {
 
               <div className="flex flex-col gap-2 mb-6">
                 <label className="code-font text-xs text-subtle-gray">{t.contact.form.details}</label>
-                <textarea required rows={4} className="bg-white/5 border border-white/10 p-3 rounded focus:outline-none focus:border-white/50 text-sm transition-colors resize-none"></textarea>
+                <textarea required value={formData.details} onChange={(e) => setFormData({...formData, details: e.target.value})} rows={4} className="bg-white/5 border border-white/10 p-3 rounded-xl focus:outline-none focus:border-white/50 text-sm transition-colors resize-none text-white"></textarea>
               </div>
 
               <div className="flex flex-col gap-2 mb-8">
@@ -149,16 +186,17 @@ export default function Contact() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button 
                   type="submit"
+                  disabled={isSubmitting}
                   data-cursor-hover
-                  className="flex-1 py-4 bg-white text-black font-bold text-sm tracking-widest hover:bg-white/90 transition-colors"
+                  className="flex-1 py-4 rounded-xl bg-white text-black font-bold text-sm tracking-widest hover:bg-white/90 transition-colors disabled:opacity-50"
                 >
-                  {t.contact.form.btnStart}
+                  {isSubmitting ? 'GÖNDERİLİYOR...' : t.contact.form.btnStart}
                 </button>
                 <button 
                   type="button"
                   onClick={() => window.open('https://wa.me/905555555555', '_blank')}
                   data-cursor-hover
-                  className="flex-1 py-4 bg-transparent border border-white/20 text-white font-bold text-sm tracking-widest hover:border-white transition-colors"
+                  className="flex-1 py-4 rounded-xl bg-transparent border border-white/20 text-white font-bold text-sm tracking-widest hover:border-white transition-colors"
                 >
                   {t.contact.form.btnWhatsapp}
                 </button>

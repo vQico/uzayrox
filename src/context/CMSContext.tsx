@@ -18,6 +18,16 @@ export interface SocialPlatform {
   servicesEN: string[];
 }
 
+export interface Ticket {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  details: string;
+  date: string;
+}
+
 export interface CMSData {
   heroTitleMainTR: string;
   heroTitleSubTR: string;
@@ -35,6 +45,7 @@ export interface CMSData {
   contactDescEN: string;
   socialLinks: SocialLink[];
   socialPlatforms: SocialPlatform[];
+  tickets: Ticket[];
 }
 
 const defaultCMSData: CMSData = {
@@ -130,7 +141,8 @@ const defaultCMSData: CMSData = {
       servicesTR: ["Kapatılan Hesabı Açma İşlemleri", "Hesap Düzenleme", "Profil İşlemleri", "Destek Süreçleri"],
       servicesEN: ["Recover Disabled Account", "Account Editing", "Profile Operations", "Support Processes"]
     }
-  ]
+  ],
+  tickets: []
 };
 
 interface CMSContextType {
