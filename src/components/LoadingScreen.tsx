@@ -24,21 +24,19 @@ function LoadingCore() {
   });
 
   return (
-    <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-      <group scale={0.8}>
+    <Float speed={2} rotationIntensity={1.5} floatIntensity={2}>
+      <group scale={1}>
         {/* Inner Core */}
         <mesh ref={coreRef}>
-          <torusKnotGeometry args={[1, 0.3, 128, 16]} />
-          <meshBasicMaterial color="#ff0000" wireframe transparent opacity={0.4} />
+          <icosahedronGeometry args={[1, 1]} />
+          <meshBasicMaterial color="#00ff00" wireframe transparent opacity={0.3} />
         </mesh>
         
-        {/* Outer Ring 1 (Red) */}
+        {/* Outer Ring 1 (Green) */}
         <mesh ref={ringRef1}>
-          <torusGeometry args={[2.5, 0.02, 16, 100]} />
-          <meshBasicMaterial color="#ff0000" transparent opacity={0.5} />
+          <torusGeometry args={[2, 0.05, 16, 100]} />
+          <meshBasicMaterial color="#00ff00" transparent opacity={0.4} />
         </mesh>
-
-        {/* Center Glow Removed as Requested */}
       </group>
     </Float>
   );
@@ -134,7 +132,7 @@ export default function LoadingScreen() {
               animate={{ opacity: stage >= 1 ? 1 : 0 }}
               className="flex justify-between font-mono items-center"
             >
-              <span className="text-red-500 whitespace-pre text-xs">{loadingBar}</span>
+              <span className="text-green-500 whitespace-pre text-xs">{loadingBar}</span>
               <span className="text-white text-xs">{progress}%</span>
             </motion.div>
             

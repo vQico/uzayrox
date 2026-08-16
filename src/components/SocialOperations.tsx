@@ -12,8 +12,8 @@ const platforms = [
     name: 'INSTAGRAM',
     icon: FaInstagram,
     servicesTR: [
+      'Kapatılan Hesabı Açma İşlemleri',
       'Hesap Açma',
-      'Hesap Kapatma',
       'Hesap Düzenleme',
       'Kullanıcı Adı İşlemleri',
       'Hesap Destek Süreçleri',
@@ -21,8 +21,8 @@ const platforms = [
       'Telif Süreçleri'
     ],
     servicesEN: [
+      'Recover Disabled Account',
       'Account Creation',
-      'Account Closure',
       'Account Management',
       'Username Operations',
       'Account Support Processes',
@@ -35,6 +35,7 @@ const platforms = [
     name: 'WHATSAPP',
     icon: FaWhatsapp,
     servicesTR: [
+      'Kapatılan/Askıya Alınan Numaraları Aktif Etme',
       'İşletme Hesabı',
       'Hesap İşlemleri',
       'Destek Süreçleri',
@@ -42,6 +43,7 @@ const platforms = [
       'WhatsApp Business Çözümleri'
     ],
     servicesEN: [
+      'Recover Banned/Suspended Numbers',
       'Business Account',
       'Account Operations',
       'Support Processes',
@@ -54,12 +56,14 @@ const platforms = [
     name: 'TIKTOK',
     icon: FaTiktok,
     servicesTR: [
+      'Kapatılan Hesabı Açma İşlemleri',
       'Hesap İşlemleri',
       'İçerik Süreçleri',
       'Telif Süreçleri',
       'Destek İşlemleri'
     ],
     servicesEN: [
+      'Recover Disabled Account',
       'Account Operations',
       'Content Processes',
       'Copyright Processes',
@@ -71,12 +75,14 @@ const platforms = [
     name: 'GOOGLE',
     icon: FaGoogle,
     servicesTR: [
+      'Kapatılan Hesabı Açma İşlemleri',
       'Google Business',
       'Profil İşlemleri',
       'Hesap Destek Süreçleri',
       'Dijital Görünürlük Çözümleri'
     ],
     servicesEN: [
+      'Recover Disabled Account',
       'Google Business',
       'Profile Operations',
       'Account Support Processes',
@@ -88,11 +94,13 @@ const platforms = [
     name: 'FACEBOOK',
     icon: FaFacebookF,
     servicesTR: [
+      'Kapatılan Hesabı Açma İşlemleri',
       'Hesap İşlemleri',
       'Sayfa İşlemleri',
       'Destek Süreçleri'
     ],
     servicesEN: [
+      'Recover Disabled Account',
       'Account Operations',
       'Page Operations',
       'Support Processes'
@@ -103,12 +111,14 @@ const platforms = [
     name: 'YOUTUBE',
     icon: FaYoutube,
     servicesTR: [
+      'Kapatılan Hesabı Açma İşlemleri',
       'Kanal İşlemleri',
       'Telif Süreçleri',
       'Kanal Düzenleme',
       'Destek'
     ],
     servicesEN: [
+      'Recover Disabled Account',
       'Channel Operations',
       'Copyright Processes',
       'Channel Editing',
@@ -120,11 +130,13 @@ const platforms = [
     name: 'X',
     icon: FaXTwitter,
     servicesTR: [
+      'Kapatılan Hesabı Açma İşlemleri',
       'Hesap Düzenleme',
       'Profil İşlemleri',
       'Destek Süreçleri'
     ],
     servicesEN: [
+      'Recover Disabled Account',
       'Account Editing',
       'Profile Operations',
       'Support Processes'

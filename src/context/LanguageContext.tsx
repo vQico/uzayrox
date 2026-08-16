@@ -24,8 +24,31 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     const savedLang = localStorage.getItem('uzayrox_lang') as Language;
     if (savedLang === 'en' || savedLang === 'tr') {
       setLang(savedLang);
+      setMounted(true);
+    } else {
+      // Auto-detect country if no lang saved
+      fetch('https://ipapi.co/json/')
+        .then((res) => res.json())
+        .then((data) => {
+          if (data && data.country_code) {
+            // Default to TR for Turkey, EN for the rest of the world
+            if (data.country_code === 'TR') {
+              setLang('tr');
+              localStorage.setItem('uzayrox_lang', 'tr');
+            } else {
+              setLang('en');
+              localStorage.setItem('uzayrox_lang', 'en');
+            }
+          }
+        })
+        .catch(() => {
+          // Fallback to TR
+          setLang('tr');
+        })
+        .finally(() => {
+          setMounted(true);
+        });
     }
-    setMounted(true);
   }, []);
 
   const handleSetLang = (newLang: Language) => {

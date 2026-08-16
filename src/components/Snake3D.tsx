@@ -38,7 +38,7 @@ function SlitheringSnake() {
       <mesh ref={meshRef}>
         <torusKnotGeometry args={[12, 0.4, 400, 50, 4, 9]} />
         <meshBasicMaterial 
-          color="#ff0000" 
+          color="#00ff00" 
           wireframe={true} 
           transparent={true} 
           opacity={0.3} 
